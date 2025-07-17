@@ -36,6 +36,12 @@ if(USE_AVFFT)
     ${FFMPEG_LIBAVCODEC_LIBRARIES}
     ${FFMPEG_LIBAVUTIL_LIBRARIES}
   )
+  if(MINGW)
+    list(APPEND chromaprint_LINK_LIBS
+      bcrypt
+      winpthread
+    )
+  endif()
   include_directories(
     ${FFMPEG_LIBAVCODEC_INCLUDE_DIRS}
     ${FFMPEG_LIBAVUTIL_INCLUDE_DIRS}
